@@ -6,7 +6,8 @@ const session = require('express-session')
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
-
+const axios = require('axios'); 
+const methodOverride = require('method-override')
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
@@ -14,6 +15,7 @@ app.use(ejsLayouts)
 
 // body parser middelware
 app.use(express.urlencoded({extended:false}))
+app.use(methodOverride('_method'))
 
 // session middleware
 app.use(session({
@@ -39,7 +41,11 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
-
+app.use('/people', require('./controllers/swPeople.js'))
+app.use('/planets', require('./controllers/swPlanets.js'))
+app.use('/vehicles', require('./controllers/swVehicles.js'))
+app.use('/films', require('./controllers/swFilms.js'))
+app.use('/starships', require('./controllers/swStarships.js'))
 
 // home route
 app.get('/', (req, res)=>{
@@ -50,7 +56,6 @@ app.get('/', (req, res)=>{
 app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')
 })
-
 
 app.listen(3000, ()=>{
     console.log(`process.env.SUPER_SECRET_SECRET ${process.env.SUPER_SECRET_SECRET}`)
