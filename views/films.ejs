@@ -1,5 +1,9 @@
 <h1>Films List</h1>
 
+<h2>Titles</h2>
 <% swFilms.forEach(title => { %>
-    <a href="#"><%= title.title %></a>
+    <br><br>
+    <div><%= title.title %> <br>Directed By: 
+    <%= title.director %>
+    </div>
 <% }) %>

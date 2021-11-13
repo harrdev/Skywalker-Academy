@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     axios.get(swapi).then(apiResponse => {
       let swPeople = apiResponse.data.results;
       console.log("these are the people: ", swPeople)
-      res.render('people.ejs')
+      res.render('people.ejs', { swPeople })
     })
   });
 

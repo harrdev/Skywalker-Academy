@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
     // Use request to call the API
     axios.get(swapi).then(apiResponse => {
       let swStarships = apiResponse.data.results;
-      console.log("these are the starships: ", swStarships)
-      res.render('starships.ejs')
+      res.render('starships.ejs', { swStarships })
     })
   });
 

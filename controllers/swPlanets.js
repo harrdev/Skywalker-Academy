@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
     // Use request to call the API
     axios.get(swapi).then(apiResponse => {
       let swPlanets = apiResponse.data.results;
-      console.log("these are the planets: ", swPlanets)
-      res.render('planets.ejs')
+      res.render('planets.ejs', { swPlanets })
     })
   });
 
