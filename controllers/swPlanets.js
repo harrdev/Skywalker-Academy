@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 let one = "https://swapi.dev/api/planets"
 let two = "https://swapi.dev/api/planets/?page=2"
@@ -15,7 +16,7 @@ const requestThree = axios.get(three);
 const requestFour = axios.get(four);
 const requestFive = axios.get(five);
 const requestSix = axios.get(six)
-router.get('/', (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
     axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive, requestSix]).then(axios.spread((...responses) => {
         const responseOne = responses[0]
         const responseTwo = responses[1]

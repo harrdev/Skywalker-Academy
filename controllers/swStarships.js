@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 // INDEX ROUTE
 // router.get('/', (req, res) => {
@@ -21,7 +22,7 @@ const requestOne = axios.get(one);
 const requestTwo = axios.get(two);
 const requestThree = axios.get(three);
 const requestFour = axios.get(four)
-router.get('/', (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
     axios.all([requestOne, requestTwo, requestThree, requestFour]).then(axios.spread((...responses) => {
         const responseOne = responses[0]
         const responseTwo = responses[1]

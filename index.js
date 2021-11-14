@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 app.use('/auth', require('./controllers/auth'))
 app.use('/people', require('./controllers/swPeople.js'))
 app.use('/planets', require('./controllers/swPlanets.js'))
-app.use('/vehicles', require('./controllers/swSpecies.js'))
+app.use('/species', require('./controllers/swSpecies.js'))
 app.use('/films', require('./controllers/swFilms.js'))
 app.use('/starships', require('./controllers/swStarships.js'))
 

@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const axios = require('axios')
+const axios = require('axios');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 // INDEX ROUTE
-router.get('/', (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
     let swapi = 'https://swapi.dev/api/films';
     // Use request to call the API
     axios.get(swapi).then(apiResponse => {
