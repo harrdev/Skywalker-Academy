@@ -3,15 +3,6 @@ const router = express.Router()
 const axios = require('axios')
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-// INDEX ROUTE
-// router.get('/', (req, res) => {
-//     let swapi = 'https://swapi.dev/api/vehicles';
-//     // Use request to call the API
-//     axios.get(swapi).then(apiResponse => {
-//       let swVehicles = apiResponse.data.results;
-//       res.render('vehicles.ejs', { swVehicles })
-//     })
-//   });
 let one = "https://swapi.dev/api/species"
 let two = "https://swapi.dev/api/species/?page=2"
 let three = "https://swapi.dev/api/species/?page=3"
@@ -38,6 +29,5 @@ router.get('/', isLoggedIn, (req, res) => {
     console.error
   })
 })
-
 
 module.exports = router
