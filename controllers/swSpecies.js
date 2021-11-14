@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
-const isLoggedIn = require('../middleware/isLoggedIn');
+const isLoggedIn = require('../middleware/isLoggedIn')
 
 let one = "https://swapi.dev/api/species"
 let two = "https://swapi.dev/api/species/?page=2"
 let three = "https://swapi.dev/api/species/?page=3"
 let four = "https://swapi.dev/api/species/?page=4"
 
-const requestOne = axios.get(one);
-const requestTwo = axios.get(two);
-const requestThree = axios.get(three);
-const requestFour = axios.get(four);
+const requestOne = axios.get(one)
+const requestTwo = axios.get(two)
+const requestThree = axios.get(three)
+const requestFour = axios.get(four)
 
 router.get('/', isLoggedIn, (req, res) => {
   axios.all([requestOne, requestTwo, requestThree, requestFour]).then(axios.spread((...responses) => {

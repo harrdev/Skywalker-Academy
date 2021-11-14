@@ -13,9 +13,9 @@ let seven = "https://swapi.dev/api/people/?page=7"
 let eight = "https://swapi.dev/api/people/?page=8"
 let nine = "https://swapi.dev/api/people/?page=9"
 
-const requestOne = axios.get(one);
-const requestTwo = axios.get(two);
-const requestThree = axios.get(three);
+const requestOne = axios.get(one)
+const requestTwo = axios.get(two)
+const requestThree = axios.get(three)
 const requestFour = axios.get(four)
 const requestFive = axios.get(five)
 const requestSix = axios.get(six)
