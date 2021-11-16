@@ -46,7 +46,7 @@ app.use('/planets', require('./controllers/swPlanets.js'))
 app.use('/species', require('./controllers/swSpecies.js'))
 app.use('/films', require('./controllers/swFilms.js'))
 app.use('/starships', require('./controllers/swStarships.js'))
-
+// app.use('/academy', require('./controllers/academy.js'))
 // home route
 app.get('/', (req, res)=>{
     res.render('home')
@@ -58,6 +58,6 @@ app.get('/profile', isLoggedIn, (req, res)=>{
 })
 
 app.listen(3000, ()=>{
-    console.log(`process.env.SUPER_SECRET_SECRET ${process.env.SUPER_SECRET_SECRET}`)
+    // console.log(`process.env.SUPER_SECRET_SECRET ${process.env.SUPER_SECRET_SECRET}`)
     console.log("Listening to port 3000")
 })

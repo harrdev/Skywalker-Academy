@@ -4,7 +4,8 @@
 <% swFilms.forEach(title => { %>
     <br><br>
     <div>
-        <a href="/academy/<%= title.title %>"><%= title.title %></a>
+        <a href="/films/<%= title.title %>"><%= title.title %></a>
+        <% console.log(title.title) %>
     <h3>Directed by: <%= title.director %></h3>
     <p><%= title.opening_crawl %></p>
     </div>
