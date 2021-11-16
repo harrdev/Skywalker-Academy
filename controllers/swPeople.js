@@ -50,4 +50,44 @@ router.get('/', isLoggedIn, (req, res) => {
     })
 })
 
+router.get('/:person', function (req, res) {
+    let person = req.params.person
+    axios.get(`https://swapi.dev/api/people/?search=${person}`)
+        .then(apiRes => {
+            // let name = apiRes.data.results[0].name
+             let homeworld = apiRes.data.results[0].homeworld
+            // let birthYear = apiRes.data.results[0].birth_year
+            // let height = apiRes.data.results[0].height
+            // let hair = apiRes.data.results[0].hair_color
+            // let eyes = apiRes.data.results[0].eye_color
+            console.log("homeworld: ", homeworld)
+            console.log("Api Data: ", apiRes.data.results)
+            // res.render('academyPeople.ejs', { name, birthYear, height, hair, eyes })
+            return apiRes.data.results[0]
+        })
+        .then(result => {
+            console.log("This is the passed data:", result)
+            axios.get(result.homeworld)
+                .then(res => {
+                    // console.log("This is res: ", res.data.name)
+                    // console.log("This is the result data:", result)
+                    console.log("Luke should be: ", result.name)
+                    let name = result.name
+                    let homeworld = res.data.name
+                    let birthYear = result.birth_year
+                    let height = result.height
+                    let hair = result.hair_color
+                    let eyes = result.eye_color
+                    console.log("Hair should be: ", hair)
+                    res.render('academyPeople.ejs', { name, birthYear, height, hair, eyes, homeworld })
+                })
+                .catch(error => {
+                    console.error
+                })
+        })
+        .catch(error => {
+            console.error
+        })
+})
+
 module.exports = router

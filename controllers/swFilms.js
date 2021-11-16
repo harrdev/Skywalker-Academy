@@ -15,14 +15,15 @@ router.get('/', isLoggedIn, (req, res) => {
 
   router.get('/:title', function(req, res) {
     let title = req.params.title
-    console.log("this is the title: ", title)
     const searchUrl = `https://swapi.dev/api/films/?search=${title}`
-    console.log("this is search URL: ", searchUrl)
     axios.get(`https://swapi.dev/api/films/?search=${title}`)
     .then(apiRes => {
         let url = apiRes.data.results[0].url
+        let title = apiRes.data.results[0].title
+        let crawl = apiRes.data.results[0].opening_crawl
         console.log("data captured: ", url)
-        res.render('academy.ejs', { title, url })
+        console.log("title :", title)
+        res.render('academy.ejs', { title, url, crawl })
     })
 })
 module.exports = router
