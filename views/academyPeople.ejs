@@ -4,8 +4,9 @@
 <h2>Height: <%= height %></h2>
 <h2>Hair Color: <%= hair %></h2>
 <h2>Eye Color: <%= eyes %></h2>
+<h2>Homeworld: <%= homeworld %></h2>
 
-<form action="/academy/addFave" method="POST">
-    <input hidden type="text" name="title" value="<%= name %>">
+<form action="/favePeople/addFave" method="POST">
+    <input hidden type="text" name="name" value="<%= name %>">
     <button type="submit">Add to Favorites</button>
 </form>

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const isLoggedIn = require('../middleware/isLoggedIn')
+const db = require('../models')
 
 let one = "https://swapi.dev/api/people"
 let two = "https://swapi.dev/api/people/?page=2"
@@ -54,23 +55,23 @@ router.get('/:person', function (req, res) {
     let person = req.params.person
     axios.get(`https://swapi.dev/api/people/?search=${person}`)
         .then(apiRes => {
-             let homeworld = apiRes.data.results[0].homeworld
-            console.log("homeworld: ", homeworld)
-            console.log("Api Data: ", apiRes.data.results)
+            let homeworld = apiRes.data.results[0].homeworld
+            // console.log("homeworld: ", homeworld)
+            // console.log("Api Data: ", apiRes.data.results)
             return apiRes.data.results[0]
         })
         .then(result => {
-            console.log("This is the passed data:", result)
+            //console.log("This is the passed data:", result)
             axios.get(result.homeworld)
                 .then(respond => {
-                    console.log("Luke should be: ", result.name)
+                    // console.log("Luke should be: ", result.name)
                     let name = result.name
                     let homeworld = respond.data.name
                     let birthYear = result.birth_year
                     let height = result.height
                     let hair = result.hair_color
                     let eyes = result.eye_color
-                    console.log("Hair should be: ", hair)
+                    // console.log("Hair should be: ", hair)
                     res.render('academyPeople', { name, birthYear, height, hair, eyes, homeworld })
                 })
                 .catch(error => {

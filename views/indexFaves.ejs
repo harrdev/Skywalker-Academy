@@ -1,0 +1,10 @@
+<h1>Favorite Star Wars People</h1>
+
+<%results.forEach(result => {%>
+    <h3>
+        <a href="/people/<%= result.name %>"><%= result.name %></a>
+    </h3>
+    <form action="/faves/<%= result.name %>?_method=DELETE" method="POST">
+        <button type="submit">Remove From Favorites</button>
+    </form>
+<%})%>

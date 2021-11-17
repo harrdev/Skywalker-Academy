@@ -46,6 +46,7 @@ app.use('/planets', require('./controllers/swPlanets.js'))
 app.use('/species', require('./controllers/swSpecies.js'))
 app.use('/films', require('./controllers/swFilms.js'))
 app.use('/starships', require('./controllers/swStarships.js'))
+app.use('/favePeople', require('./controllers/favePeople.js'))
 // app.use('/academy', require('./controllers/academy.js'))
 // home route
 app.get('/', (req, res)=>{
