@@ -22,7 +22,7 @@ router.post('/addFave', (req, res) => {
     })
     .then(createdFave => {
         console.log("DB instance created: \n", createdFave)
-        res.redirect(`/people/${createdFave.id}`)
+        res.redirect(`/people/${createdFave.name}`)
     })
     .catch(error => {
         console.error
