@@ -6,7 +6,7 @@ const session = require('express-session')
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
-const axios = require('axios'); 
+const axios = require('axios')
 const methodOverride = require('method-override')
 
 // views (ejs and layouts) set up

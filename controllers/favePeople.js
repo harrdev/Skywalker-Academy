@@ -42,6 +42,25 @@ router.get('/:id', (req, res) => {
         console.error
     })
 })
+// GET UPDATE FORM
+router.get('/edit/:id', (req, res)=>{
+    console.log("Edit route hit: ", req.params.id)
+    let favorite = db.favorite.findAll()
+    res.render('edit.ejs', {personId: req.params.id, name: favorite.name[req.params.id]})
+})
+
+// // UPDATE ROUTE
+// router.put('/:id', (req, res)=>{
+//     console.log("We're in the router.put route")
+//     // let creature = fs.readFileSync('./prehistoric_creatures.json')
+//     // let creatureData = JSON.parse(creature)
+//     creatureData[req.params.id].type = req.body.type
+
+//     // save the editted creatures to the json file
+//     // fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creatureData))
+//     res.redirect('/favePeople')
+// })
+
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
     console.log('this is the id: ', req.params.id)
