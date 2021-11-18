@@ -2,6 +2,17 @@ const express = require('express')
 const router = express.Router()
 const db = require('../models')
 
+
+// we need an index route that will show all faves
+router.get('/', (req, res) => {
+    db.favorite.findAll()
+        .then(faves => {
+            res.render('indexFaves', {results: faves})
+        })
+        .catch(error => {
+            console.error
+        })
+})
 // SAVE ROUTE
 router.post('/addFave', (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
@@ -11,7 +22,7 @@ router.post('/addFave', (req, res) => {
     })
     .then(createdFave => {
         console.log("DB instance created: \n", createdFave)
-        res.redirect(`/people/${createdFave.name}`)
+        res.redirect(`/people/${createdFave.id}`)
     })
     .catch(error => {
         console.error
@@ -19,13 +30,13 @@ router.post('/addFave', (req, res) => {
 })
 
 // SHOW ROUTE
-router.get('/:name', (req, res) => {
-    console.log('this is the fave name\n', req.params.name)
+router.get('/:id', (req, res) => {
+    console.log('this is the fave id\n', req.params.id)
     db.favorite.findOne({
-       where: { name: req.params.name } 
+       where: { id: req.params.id } 
     })
     .then(foundFave => {
-        res.render('faveDetail', { name: foundFave.name, date: foundFave.createdAt })
+        res.render('faveDetail', { name: foundFave.name, id: foundFave.id})
     })
     .catch(error => {
         console.error
@@ -33,13 +44,13 @@ router.get('/:name', (req, res) => {
 })
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
-    //console.log('this is the id: ', req.params.id)
+    console.log('this is the id: ', req.params.id)
     db.favorite.destroy({ 
-        where: { id: req.params.name }
+        where: { name: req.params.id }
     })
     .then(deletedItem => {
-        //console.log('you deleted: ', deletedItem)
-        res.redirect('/faves')
+        console.log('you deleted: ', deletedItem)
+        res.redirect('/favePeople')
     })
     .catch(error => {
         console.error
