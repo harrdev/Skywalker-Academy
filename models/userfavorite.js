@@ -11,12 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      //models.userFavorite.belongsToMany(models.user)
-      //models.userFavorite.belongsTo(models.favorite)
     }
   };
   userFavorite.init({
-    name: DataTypes.STRING
+    userId: DataTypes.INTEGER,
+    favoriteId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'userFavorite',
