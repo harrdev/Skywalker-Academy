@@ -5,9 +5,10 @@ const isLoggedIn = require('../middleware/isLoggedIn')
 
 // we need an index route that will show all faves
 router.get('/', isLoggedIn, (req, res) => {
-    db.favorite.findAll()
+    // db.favorite.findAll()
+    req.user.getFavorites()
         .then(faves => {
-            res.render('indexFaves', {results: faves})
+            res.render('indexFaves', { results: faves })
         })
         .catch(error => {
             console.error
@@ -20,13 +21,17 @@ router.post('/addFave', isLoggedIn, (req, res) => {
     db.favorite.findOrCreate({
         where: { name: data.name }
     })
-    .then(createdFave => {
-        console.log("DB instance created: \n", createdFave)
-        res.redirect(`/people/${createdFave.name}`)
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(([createdFave, wasCreated]) => {
+            req.user.addFavorites(createdFave)
+            console.log("DB instance created: \n", createdFave)
+                .then(relationInfo => {
+                    console.log("relation info: ", relationInfo)
+                    res.redirect(`/people/${createdFave.name}`)
+                })
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 // SHOW ROUTE
@@ -34,20 +39,20 @@ router.get('/:id', isLoggedIn, (req, res) => {
     console.log('this is the fave id\n', req.params.id)
     console.log(req.user)
     db.favorite.findOne({
-       where: { id: req.params.id } 
+        where: { id: req.params.id }
     })
-    .then(foundFave => {
-        res.render('faveDetail', { name: foundFave.name, id: foundFave.id})
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(foundFave => {
+            res.render('faveDetail', { name: foundFave.name, id: foundFave.id })
+        })
+        .catch(error => {
+            console.error
+        })
 })
 // GET UPDATE FORM
-router.get('/edit/:id', isLoggedIn, (req, res)=>{
+router.get('/edit/:id', isLoggedIn, (req, res) => {
     console.log("Edit route hit: ", req.params.id)
     let favorite = db.favorite.findAll()
-    res.render('edit.ejs', {personId: req.params.id, name: favorite.name[req.params.id]})
+    res.render('edit.ejs', { personId: req.params.id, name: favorite.name[req.params.id] })
 })
 
 // // UPDATE ROUTE
@@ -65,16 +70,16 @@ router.get('/edit/:id', isLoggedIn, (req, res)=>{
 // DELETE ROUTE
 router.delete('/:id', isLoggedIn, (req, res) => {
     console.log('this is the id: ', req.params.id)
-    db.favorite.destroy({ 
+    db.favorite.destroy({
         where: { name: req.params.id }
     })
-    .then(deletedItem => {
-        console.log('you deleted: ', deletedItem)
-        res.redirect('/favePeople')
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(deletedItem => {
+            console.log('you deleted: ', deletedItem)
+            res.redirect('/favePeople')
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 module.exports = router
