@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
-const isLoggedIn = require('../middleware/isLoggedIn')
+
 
 // we need an index route that will show all faves
-router.get('/', isLoggedIn, (req, res) => {
+router.get('/', (req, res) => {
     db.favorite.findAll()
         .then(faves => {
             res.render('indexFaves', {results: faves})
@@ -14,15 +14,15 @@ router.get('/', isLoggedIn, (req, res) => {
         })
 })
 // SAVE ROUTE
-router.post('/addFave', isLoggedIn, (req, res) => {
+router.post('/addFave', (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
     //console.log("This is the data: ", data)
-    db.favorite.findOrCreate({
-        where: { name: data.name }
+    db.favorite.create({
+        name: data.name
     })
     .then(createdFave => {
         console.log("DB instance created: \n", createdFave)
-        res.redirect(`/people/${createdFave.name}`)
+        res.redirect(`/planets/${createdFave.name}`)
     })
     .catch(error => {
         console.error
@@ -30,9 +30,8 @@ router.post('/addFave', isLoggedIn, (req, res) => {
 })
 
 // SHOW ROUTE
-router.get('/:id', isLoggedIn, (req, res) => {
+router.get('/:id', (req, res) => {
     console.log('this is the fave id\n', req.params.id)
-    console.log(req.user)
     db.favorite.findOne({
        where: { id: req.params.id } 
     })
@@ -44,33 +43,21 @@ router.get('/:id', isLoggedIn, (req, res) => {
     })
 })
 // GET UPDATE FORM
-router.get('/edit/:id', isLoggedIn, (req, res)=>{
+router.get('/edit/:id', (req, res)=>{
     console.log("Edit route hit: ", req.params.id)
     let favorite = db.favorite.findAll()
-    res.render('edit.ejs', {personId: req.params.id, name: favorite.name[req.params.id]})
+    res.render('edit.ejs', {planetId: req.params.id, name: favorite.name[req.params.id]})
 })
 
-// // UPDATE ROUTE
-// router.put('/:id', (req, res)=>{
-//     console.log("We're in the router.put route")
-//     // let creature = fs.readFileSync('./prehistoric_creatures.json')
-//     // let creatureData = JSON.parse(creature)
-//     creatureData[req.params.id].type = req.body.type
-
-//     // save the editted creatures to the json file
-//     // fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creatureData))
-//     res.redirect('/favePeople')
-// })
-
 // DELETE ROUTE
-router.delete('/:id', isLoggedIn, (req, res) => {
+router.delete('/:id', (req, res) => {
     console.log('this is the id: ', req.params.id)
     db.favorite.destroy({ 
         where: { name: req.params.id }
     })
     .then(deletedItem => {
         console.log('you deleted: ', deletedItem)
-        res.redirect('/favePeople')
+        res.redirect('/favePlanets')
     })
     .catch(error => {
         console.error

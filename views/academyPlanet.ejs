@@ -1,0 +1,10 @@
+<h1>People Academy</h1><br><br>
+<h1>Name: <%= name %></h1>
+<h2>Population: <%= population %></h2>
+<h2>Terrain: <%= terrain %></h2>
+<h2>Gravity: <%= gravity %></h2>
+
+<form action="/favePlanet/addFave" method="POST">
+    <input hidden type="text" name="name" value="<%= name %>">
+    <button type="submit">Add to Favorites</button>
+</form>

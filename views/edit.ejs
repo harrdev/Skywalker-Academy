@@ -1,6 +1,5 @@
-<form action="/favePeople/addFave<%= personId %>/?_method=PUT" method="POST">
+<form action="favePeople/edit/<%= personId %>/?_method=PUT" method="POST">
     <label for="charName">Name</label>
     <input type="text" id="peopleName" name="type" value="<%= favorite.name %>">
-
     <input type="submit" value="Update Person">
 </form>

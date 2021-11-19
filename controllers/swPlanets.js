@@ -36,5 +36,20 @@ router.get('/', isLoggedIn, (req, res) => {
         console.error
     })
 })
-
+router.get('/:planet', function (req, res) {
+    let planet = req.params.planet
+    console.log(planet)
+    axios.get(`https://swapi.dev/api/planets/?search=${planet}`)
+        .then(apiRes => {
+            let name = apiRes.data.results[0].name
+            let population = apiRes.data.results[0].population
+            let gravity = apiRes.data.results[0].gravity
+            let terrain = apiRes.data.results[0].terrain
+            let diameter = apiRes.data.results[0].diameter
+            res.render('academyPlanet', { name, population, gravity, terrain, diameter })
+        })
+        .catch(error => {
+            console.error
+        })
+})
 module.exports = router
