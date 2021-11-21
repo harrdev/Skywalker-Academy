@@ -30,7 +30,7 @@ router.post('/addFave', isLoggedIn, (req, res) => {
         .then(([createdFave, wasCreated]) => {
             req.user.addFavepeople(createdFave)
             console.log("DB instance created: \n", createdFave)
-            res.redirect('/people/')
+            res.redirect('/favePeople')
                 // .then(relationInfo => {
                 //     console.log("relation info: ", relationInfo)
                 //     res.redirect(`/people/${createdFave.name}`)
@@ -74,7 +74,7 @@ router.put('/:id', (req, res) => {
     })
     .then(editedItem => {
         console.log("This was edited: ", editedItem)
-        res.redirect('/people')
+        res.redirect('/favePeople')
     })
     .catch(error => {
         console.error
@@ -105,7 +105,7 @@ router.delete('/:id', isLoggedIn, (req, res) => {
     })
         .then(deletedItem => {
             console.log('you deleted: ', deletedItem)
-            res.redirect('people/favePeople')
+            res.redirect('/favePeople')
         })
         .catch(error => {
             console.error

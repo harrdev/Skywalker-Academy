@@ -25,17 +25,18 @@ router.post('/addFave', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
     db.faveplanet.findOrCreate({
         where: { name: data.name },
-        defaults: { gravity: data.gravity, population: data.population, terrain: data.terrain, diameter: data.diameter}
+        defaults: { gravity: data.gravity, population: data.population, terrain: data.terrain, diameter: data.diameter }
     })
         .then(([createdFave, wasCreated]) => {
             req.user.addFaveplanets(createdFave)
             console.log("DB instance created: \n", createdFave)
-            res.redirect('planets/planets/')
+            res.redirect('/favePlanets')
         })
         .catch(error => {
             console.error
         })
 })
+
 // GET UPDATE FORM
 router.get('/edit/:idx', isLoggedIn, (req, res) => {
     console.log("Edit route hit: ", req.params.idx)
@@ -67,41 +68,42 @@ router.put('/:id', (req, res) => {
     }, {
         where: { name: data.name }
     })
-    .then(editedItem => {
-        console.log("This was edited: ", editedItem)
-        res.redirect('/planets')
-    })
-    .catch(error => {
-        console.error
-    })
-  });
+        .then(editedItem => {
+            console.log("This was edited: ", editedItem)
+            res.redirect('/planets')
+        })
+        .catch(error => {
+            console.error
+        })
+});
+
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {
     console.log('this is the fave id\n', req.params.id)
     db.faveplanet.findOne({
-       where: { name: req.params.id } 
+        where: { name: req.params.id }
     })
-    .then(foundFave => {
-        res.render('planets/showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter, id: foundFave.id })
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(foundFave => {
+            res.render('planets/showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter, id: foundFave.id })
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
     console.log('this is the id: ', req.params.id)
-    db.faveplanet.destroy({ 
+    db.faveplanet.destroy({
         where: { name: req.params.id }
     })
-    .then(deletedItem => {
-        console.log('you deleted: ', deletedItem)
-        res.redirect('planets/favePlanets')
-    })
-    .catch(error => {
-        console.error
-    })
+        .then(deletedItem => {
+            console.log('you deleted: ', deletedItem)
+            res.redirect('/favePlanets')
+        })
+        .catch(error => {
+            console.error
+        })
 })
 
 module.exports = router
