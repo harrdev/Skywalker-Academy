@@ -31,7 +31,7 @@ router.get('/', isLoggedIn, (req, res) => {
         let swPlanets5 = responseFive.data.results
         let swPlanets6 = responseSix.data.results
         // use/access the results 
-        res.render('planets', { swPlanets1, swPlanets2, swPlanets3, swPlanets4, swPlanets5, swPlanets6 })
+        res.render('planets/planets', { swPlanets1, swPlanets2, swPlanets3, swPlanets4, swPlanets5, swPlanets6 })
     })).catch(errors => {
         console.error
     })
@@ -46,7 +46,7 @@ router.get('/:planet', function (req, res) {
             let gravity = apiRes.data.results[0].gravity
             let terrain = apiRes.data.results[0].terrain
             let diameter = apiRes.data.results[0].diameter
-            res.render('academyPlanet', { name, population, gravity, terrain, diameter })
+            res.render('planets/academyPlanet', { name, population, gravity, terrain, diameter })
         })
         .catch(error => {
             console.error

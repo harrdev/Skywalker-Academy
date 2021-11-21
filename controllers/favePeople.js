@@ -7,7 +7,7 @@ const isLoggedIn = require('../middleware/isLoggedIn')
 router.get('/', isLoggedIn, (req, res) => {
     req.user.getFavepeople()
         .then(faves => {
-            res.render('indexPeople', { results: faves })
+            res.render('people/indexPeople', { results: faves })
         })
         .catch(error => {
             console.error
@@ -17,7 +17,7 @@ router.get('/', isLoggedIn, (req, res) => {
 // NEW ROUTE
 router.get('/new', (req, res) => {
     console.log("You hit the new route")
-    res.render('newPerson.ejs')
+    res.render('people/newPerson.ejs')
 })
 
 // SAVE ROUTE
@@ -50,7 +50,7 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
         .then(foundPerson => {
             console.log("This is the person: ", foundPerson)
             console.log("This is the name: ", foundPerson.name)
-            res.render('editPeople', { personId: req.params.idx, name: foundPerson.name, height: foundPerson.height, eyes: foundPerson.eyes, hair: foundPerson.hair, homeworld: foundPerson.homeworld, birthYear: foundPerson.birthYear })
+            res.render('people/editPeople', { personId: req.params.idx, name: foundPerson.name, height: foundPerson.height, eyes: foundPerson.eyes, hair: foundPerson.hair, homeworld: foundPerson.homeworld, birthYear: foundPerson.birthYear })
         })
         .catch(error => {
             console.error
@@ -70,7 +70,7 @@ router.put('/:id', (req, res)=>{
 
     // save the editted creatures to the json file
     // fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creatureData))
-    res.redirect('/favePeople')
+    res.redirect('people/favePeople')
 })
 
 // SHOW ROUTE
@@ -82,7 +82,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
     })
         .then(foundFave => {
             console.log("Height: ", foundFave.height)
-            res.render('showPeople', { name: foundFave.name, homeworld: foundFave.homeworld, birthYear: foundFave.birthYear, height: foundFave.height, eyes: foundFave.eyes, hair: foundFave.hair, id: foundFave.id})
+            res.render('people/showPeople', { name: foundFave.name, homeworld: foundFave.homeworld, birthYear: foundFave.birthYear, height: foundFave.height, eyes: foundFave.eyes, hair: foundFave.hair, id: foundFave.id})
         })
         .catch(error => {
             console.error
@@ -97,7 +97,7 @@ router.delete('/:id', isLoggedIn, (req, res) => {
     })
         .then(deletedItem => {
             console.log('you deleted: ', deletedItem)
-            res.redirect('/favePeople')
+            res.redirect('people/favePeople')
         })
         .catch(error => {
             console.error

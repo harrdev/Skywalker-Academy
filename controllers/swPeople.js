@@ -45,7 +45,7 @@ router.get('/', isLoggedIn, (req, res) => {
         let swPeople7 = responseSeven.data.results
         let swPeople8 = responseEight.data.results
         let swPeople9 = responseNine.data.results
-        res.render('people.ejs', { swPeople1, swPeople2, swPeople3, swPeople4, swPeople5, swPeople6, swPeople7, swPeople8, swPeople9 })
+        res.render('people/people.ejs', { swPeople1, swPeople2, swPeople3, swPeople4, swPeople5, swPeople6, swPeople7, swPeople8, swPeople9 })
     })).catch(errors => {
         console.error
     })
@@ -72,7 +72,7 @@ router.get('/:person', function (req, res) {
                     let hair = result.hair_color
                     let eyes = result.eye_color
                     // console.log("Hair should be: ", hair)
-                    res.render('academyPeople', { name, birthYear, height, hair, eyes, homeworld })
+                    res.render('people/academyPeople', { name, birthYear, height, hair, eyes, homeworld })
                 })
                 .catch(error => {
                     console.error

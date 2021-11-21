@@ -7,7 +7,7 @@ const isLoggedIn = require('../middleware/isLoggedIn')
 router.get('/', isLoggedIn, (req, res) => {
     req.user.getFaveplanets()
         .then(faves => {
-            res.render('indexPlanets', { results: faves })
+            res.render('planets/indexPlanets', { results: faves })
         })
         .catch(error => {
             console.error
@@ -17,7 +17,7 @@ router.get('/', isLoggedIn, (req, res) => {
 // NEW ROUTE
 router.get('/new', (req, res) => {
     console.log("You hit the new route")
-    res.render('newPlanet.ejs')
+    res.render('planets/newPlanet.ejs')
 })
 
 // SAVE ROUTE
@@ -30,7 +30,7 @@ router.post('/addFave', isLoggedIn, (req, res) => {
         .then(([createdFave, wasCreated]) => {
             req.user.addFaveplanets(createdFave)
             console.log("DB instance created: \n", createdFave)
-            res.redirect('/planets/')
+            res.redirect('planets/planets/')
         })
         .catch(error => {
             console.error
@@ -46,7 +46,7 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
             console.log("This is the planet to edit: ", foundPlanet)
             console.log("This is the planetId: ", req.params.idx)
             console.log("This is the planet name to be passed: ", foundPlanet.name)
-            res.render('editPlanet', { planetId: req.params.idx, name: foundPlanet.name, population: foundPlanet.population, diameter: foundPlanet.diameter, terrain: foundPlanet.terrain, gravity: foundPlanet.gravity })
+            res.render('planets/editPlanet', { planetId: req.params.idx, name: foundPlanet.name, population: foundPlanet.population, diameter: foundPlanet.diameter, terrain: foundPlanet.terrain, gravity: foundPlanet.gravity })
         })
         .catch(error => {
             console.error
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
         planet.update({
           name: req.body.name
         });
-        res.redirect('favePlanets');
+        res.redirect('planets/favePlanets');
       })
       .catch((error) => {
         console.error(error.message);
@@ -75,7 +75,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
        where: { name: req.params.id } 
     })
     .then(foundFave => {
-        res.render('showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter, id: foundFave.id })
+        res.render('planets/showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter, id: foundFave.id })
     })
     .catch(error => {
         console.error
@@ -90,7 +90,7 @@ router.delete('/:id', (req, res) => {
     })
     .then(deletedItem => {
         console.log('you deleted: ', deletedItem)
-        res.redirect('/favePlanets')
+        res.redirect('planets/favePlanets')
     })
     .catch(error => {
         console.error
