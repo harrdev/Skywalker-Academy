@@ -55,15 +55,12 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 
 // // UPDATE ROUTE
 router.put('/:id', (req, res) => {
+    console.log("Data: ", req.params.id)
     db.faveplanet
       .findByPk(req.params.id)
       .then((planet) => {
         planet.update({
-          name: req.body.name,
-          population: req.body.population,
-          gravity: req.body.gravity,
-          terrain: req.body.terrain,
-          diameter: req.body.diameter,
+          name: req.body.name
         });
         res.redirect('favePlanets');
       })
@@ -72,7 +69,7 @@ router.put('/:id', (req, res) => {
       });
   });
 // SHOW ROUTE
-router.get('/:id', (req, res) => {
+router.get('/:id', isLoggedIn, (req, res) => {
     console.log('this is the fave id\n', req.params.id)
     db.faveplanet.findOne({
        where: { name: req.params.id } 

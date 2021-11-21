@@ -7,7 +7,7 @@ const isLoggedIn = require('../middleware/isLoggedIn')
 router.get('/', isLoggedIn, (req, res) => {
     req.user.getFavepeople()
         .then(faves => {
-            res.render('indexFaves', { results: faves })
+            res.render('indexPeople', { results: faves })
         })
         .catch(error => {
             console.error
@@ -67,14 +67,14 @@ router.put('/:id', (req, res)=>{
 
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {
-    console.log('this is the fave route. Here is the id: ', req.params.id)
+    console.log('this is the fave id\n', req.params.id)
     //console.log(req.user)
     db.favepeople.findOne({
-        where: { id: req.params.id }
+        where: { name: req.params.id }
     })
         .then(foundFave => {
-            console.log("In the .then of show route")
-            res.render('favePeopleDetails', { name: foundFave.name, id: foundFave.id })
+            console.log("Height: ", foundFave.height)
+            res.render('showPeople', { name: foundFave.name, homeworld: foundFave.homeworld, birthYear: foundFave.birthYear, height: foundFave.height, eyes: foundFave.eyes, hair: foundFave.hair})
         })
         .catch(error => {
             console.error
