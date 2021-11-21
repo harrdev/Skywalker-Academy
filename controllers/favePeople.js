@@ -13,6 +13,13 @@ router.get('/', isLoggedIn, (req, res) => {
             console.error
         })
 })
+
+// NEW ROUTE
+router.get('/new', (req, res) => {
+    console.log("You hit the new route")
+    res.render('newPerson.ejs')
+})
+
 // SAVE ROUTE
 router.post('/addFave', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
@@ -42,7 +49,8 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
     })
         .then(foundPerson => {
             console.log("This is the person: ", foundPerson)
-            res.render('edit', { personId: req.params.idx, name: foundPerson.favepeople.name })
+            console.log("This is the name: ", foundPerson.name)
+            res.render('editPeople', { personId: req.params.idx, name: foundPerson.name })
         })
         .catch(error => {
             console.error
