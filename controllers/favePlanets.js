@@ -59,6 +59,7 @@ router.put('/:id', (req, res) => {
     console.log("Data variable: ", data)
     console.log("Data to edit: ", data.name)
     db.faveplanet.update({
+        name: data.name,
         gravity: data.gravity,
         population: data.population,
         terrain: data.terrain,
@@ -67,7 +68,7 @@ router.put('/:id', (req, res) => {
         where: { name: data.name }
     })
     .then(editedItem => {
-        console.log("This was edited: ", editedItems)
+        console.log("This was edited: ", editedItem)
         res.redirect('/planets')
     })
     .catch(error => {

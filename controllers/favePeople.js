@@ -58,20 +58,28 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 })
 
 // // UPDATE ROUTE
-router.put('/:id', (req, res)=>{
-    console.log("We're in the router put route")
-    // let creature = fs.readFileSync('./prehistoric_creatures.json')
-    // let creatureData = JSON.parse(creature)
-    db.favepeople.findOne({
-        where: { id: req.params.idx }
+router.put('/:id', (req, res) => {
+    const data = JSON.parse(JSON.stringify(req.body))
+    console.log("Data variable: ", data)
+    console.log("Data to edit: ", data.name)
+    db.favepeople.update({
+        name: data.name,
+        homeworld: data.homeworld,
+        birthYear: data.birthYear,
+        eyes: data.eyes,
+        hair: data.hair,
+        height: data.height
+    }, {
+        where: { name: data.name }
     })
-
-    personData[req.params.id].type = req.body.type
-
-    // save the editted creatures to the json file
-    // fs.writeFileSync('./prehistoric_creatures.json', JSON.stringify(creatureData))
-    res.redirect('people/favePeople')
-})
+    .then(editedItem => {
+        console.log("This was edited: ", editedItem)
+        res.redirect('/people')
+    })
+    .catch(error => {
+        console.error
+    })
+  });
 
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {
