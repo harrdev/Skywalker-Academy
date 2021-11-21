@@ -1,11 +1,10 @@
 <link rel="stylesheet" href="/static/css/style.css">
-<h2>Favorite Star Wars Planets</h2>
+<h1>Favorite Star Wars Planets</h1>
 
 <%results.forEach(result => {%>
         <div>
-            <a href="/favePlanets/<%= result.name %>"><%= result.name %></a>
+            <h2><a href="/favePlanets/<%= result.name %>"><%= result.name %></a></h2>
         </div>
-        <a href="/favePlanets/edit/<%= result.id %>">edit</a>
     <form action="/favePlanets/<%= result.name %>?_method=DELETE" method="POST">
         <button type="submit">Remove From Favorites</button>
     </form>

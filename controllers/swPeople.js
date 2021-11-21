@@ -4,15 +4,15 @@ const axios = require('axios')
 const isLoggedIn = require('../middleware/isLoggedIn')
 const db = require('../models')
 
-let one = "https://swapi.dev/api/people"
-let two = "https://swapi.dev/api/people/?page=2"
-let three = "https://swapi.dev/api/people/?page=3"
-let four = "https://swapi.dev/api/people/?page=4"
-let five = "https://swapi.dev/api/people/?page=5"
-let six = "https://swapi.dev/api/people/?page=6"
-let seven = "https://swapi.dev/api/people/?page=7"
-let eight = "https://swapi.dev/api/people/?page=8"
-let nine = "https://swapi.dev/api/people/?page=9"
+let one = "https://swapi.py4e.com/api/people"
+let two = "https://swapi.py4e.com/api/people/?page=2"
+let three = "https://swapi.py4e.com/api/people/?page=3"
+let four = "https://swapi.py4e.com/api/people/?page=4"
+let five = "https://swapi.py4e.com/api/people/?page=5"
+let six = "https://swapi.py4e.com/api/people/?page=6"
+let seven = "https://swapi.py4e.com/api/people/?page=7"
+let eight = "https://swapi.py4e.com/api/people/?page=8"
+let nine = "https://swapi.py4e.com/api/people/?page=9"
 
 const requestOne = axios.get(one)
 const requestTwo = axios.get(two)
@@ -53,7 +53,7 @@ router.get('/', isLoggedIn, (req, res) => {
 
 router.get('/:person', function (req, res) {
     let person = req.params.person
-    axios.get(`https://swapi.dev/api/people/?search=${person}`)
+    axios.get(`https://swapi.py4e.com/api/people/?search=${person}`)
         .then(apiRes => {
             let homeworld = apiRes.data.results[0].homeworld
             // console.log("homeworld: ", homeworld)

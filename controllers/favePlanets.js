@@ -55,18 +55,24 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 
 // // UPDATE ROUTE
 router.put('/:id', (req, res) => {
-    console.log("Data: ", req.params.id)
-    db.faveplanet
-      .findByPk(req.params.id)
-      .then((planet) => {
-        planet.update({
-          name: req.body.name
-        });
-        res.redirect('planets/favePlanets');
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
+    const data = JSON.parse(JSON.stringify(req.body))
+    console.log("Data variable: ", data)
+    console.log("Data to edit: ", data.name)
+    db.faveplanet.update({
+        gravity: data.gravity,
+        population: data.population,
+        terrain: data.terrain,
+        diameter: data.diameter
+    }, {
+        where: { name: data.name }
+    })
+    .then(editedItem => {
+        console.log("This was edited: ", editedItems)
+        res.redirect('/planets')
+    })
+    .catch(error => {
+        console.error
+    })
   });
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {

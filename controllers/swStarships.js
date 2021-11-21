@@ -3,10 +3,10 @@ const router = express.Router()
 const axios = require('axios')
 const isLoggedIn = require('../middleware/isLoggedIn')
 
-let one = "https://swapi.dev/api/starships"
-let two = "https://swapi.dev/api/starships?page=2"
-let three = "https://swapi.dev/api/starships/?page=3"
-let four = "https://swapi.dev/api/starships/?page=4"
+let one = "https://swapi.py4e.com/api/starships"
+let two = "https://swapi.py4e.com/api/starships?page=2"
+let three = "https://swapi.py4e.com/api/starships/?page=3"
+let four = "https://swapi.py4e.com/api/starships/?page=4"
 
 const requestOne = axios.get(one)
 const requestTwo = axios.get(two)

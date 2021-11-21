@@ -3,12 +3,12 @@ const router = express.Router()
 const axios = require('axios')
 const isLoggedIn = require('../middleware/isLoggedIn')
 
-let one = "https://swapi.dev/api/planets"
-let two = "https://swapi.dev/api/planets/?page=2"
-let three = "https://swapi.dev/api/planets/?page=3"
-let four = "https://swapi.dev/api/planets/?page=4"
-let five = "https://swapi.dev/api/planets/?page=5"
-let six = "https://swapi.dev/api/planets/?page=6"
+let one = "https://swapi.py4e.com/api/planets"
+let two = "https://swapi.py4e.com/api/planets/?page=2"
+let three = "https://swapi.py4e.com/api/planets/?page=3"
+let four = "https://swapi.py4e.com/api/planets/?page=4"
+let five = "https://swapi.py4e.com/api/planets/?page=5"
+let six = "https://swapi.py4e.com/api/planets/?page=6"
 
 const requestOne = axios.get(one)
 const requestTwo = axios.get(two)
@@ -39,7 +39,7 @@ router.get('/', isLoggedIn, (req, res) => {
 router.get('/:planet', function (req, res) {
     let planet = req.params.planet
     console.log(planet)
-    axios.get(`https://swapi.dev/api/planets/?search=${planet}`)
+    axios.get(`https://swapi.py4e.com/api/planets/?search=${planet}`)
         .then(apiRes => {
             let name = apiRes.data.results[0].name
             let population = apiRes.data.results[0].population

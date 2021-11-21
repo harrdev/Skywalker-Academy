@@ -4,8 +4,6 @@
 <%results.forEach(result => {%>
     <h3>
         <a href="/favePeople/<%= result.name %>"><%= result.name %></a>
-
-        <a href="/favePeople/edit/<%= result.id %>">edit</a>
     </h3>
     <form action="/favePeople/<%= result.name %>?_method=DELETE" method="POST">
         <button type="submit">Remove From Favorites</button>
