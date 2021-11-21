@@ -1,6 +1,14 @@
 <link rel="stylesheet" href="/static/css/style.css">
 <form action="favePeople/<%= personId %>/?_method=PUT" method="POST">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="<%= name %>">
-    <input type="submit" value="Update Person">
+    <input type="text" id="name" name="name" value="<%= name %>"><br>
+    <label for="birthYear">Birth Year</label>
+    <input type="text" id="birthYear" name="birthYear" value="<%= birthYear %>"><br>
+    <label for="hair">Hair Color</label>
+    <input type="text" id="hair" name="hair" value="<%= hair %>"><br>
+    <label for="eyes">Eye Color</label>
+    <input type="text" id="eyes" name="eyes" value="<%= eyes %>"><br>
+    <label for="homeworld">Homeworld</label>
+    <input type="text" id="homeworld" name="homeworld" value="<%= homeworld %>"><br>
+    <input type="submit" value="Update Person Info">
 </form>

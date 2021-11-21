@@ -46,7 +46,7 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
             console.log("This is the planet to edit: ", foundPlanet)
             console.log("This is the planetId: ", req.params.idx)
             console.log("This is the planet name to be passed: ", foundPlanet.name)
-            res.render('editPlanet', { planetId: req.params.idx, name: foundPlanet.name })
+            res.render('editPlanet', { planetId: req.params.idx, name: foundPlanet.name, population: foundPlanet.population, diameter: foundPlanet.diameter, terrain: foundPlanet.terrain, gravity: foundPlanet.gravity })
         })
         .catch(error => {
             console.error
@@ -75,7 +75,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
        where: { name: req.params.id } 
     })
     .then(foundFave => {
-        res.render('showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter })
+        res.render('showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter, id: foundFave.id })
     })
     .catch(error => {
         console.error
