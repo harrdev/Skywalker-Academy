@@ -47,7 +47,8 @@ app.use('/species', require('./controllers/swSpecies.js'))
 app.use('/films', require('./controllers/swFilms.js'))
 app.use('/starships', require('./controllers/swStarships.js'))
 app.use('/favePeople', require('./controllers/favePeople.js'))
-// app.use('/academy', require('./controllers/academy.js'))
+app.use('/favePlanets', require('./controllers/favePlanets.js'))
+
 // home route
 app.get('/', (req, res)=>{
     res.render('home')
