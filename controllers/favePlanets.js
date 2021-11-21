@@ -13,6 +13,13 @@ router.get('/', isLoggedIn, (req, res) => {
             console.error
         })
 })
+
+// NEW ROUTE
+router.get('/new', (req, res) => {
+    console.log("You hit the new route")
+    res.render('newPlanet.ejs')
+})
+
 // SAVE ROUTE
 router.post('/addFave', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
@@ -37,7 +44,9 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
     })
         .then(foundPlanet => {
             console.log("This is the planet to edit: ", foundPlanet)
-            res.render('editPlanet', { planetId: req.params.idx, name: foundPlanet.faveplanet.name })
+            console.log("This is the planetId: ", req.params.idx)
+            console.log("This is the planet name to be passed: ", foundPlanet.name)
+            res.render('editPlanet', { planetId: req.params.idx, name: foundPlanet.name })
         })
         .catch(error => {
             console.error
@@ -66,10 +75,10 @@ router.put('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
     console.log('this is the fave id\n', req.params.id)
     db.faveplanet.findOne({
-       where: { id: req.params.id } 
+       where: { name: req.params.id } 
     })
     .then(foundFave => {
-        res.render('faveDetail', { name: foundFave.name, id: foundFave.id})
+        res.render('showPlanet', { name: foundFave.name, gravity: foundFave.gravity, population: foundFave.population, terrain: foundFave.terrain, diameter: foundFave.diameter })
     })
     .catch(error => {
         console.error

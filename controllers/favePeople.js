@@ -73,6 +73,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
         where: { id: req.params.id }
     })
         .then(foundFave => {
+            console.log("In the .then of show route")
             res.render('favePeopleDetails', { name: foundFave.name, id: foundFave.id })
         })
         .catch(error => {

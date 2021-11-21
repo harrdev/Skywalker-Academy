@@ -1,10 +1,10 @@
-
+<link rel="stylesheet" href="/static/css/style.css">
 <h2>Favorite Star Wars People</h2>
 
 <%results.forEach(result => {%>
     <h3>
-        <a href="/people/<%= result.name %>"><%= result.name %></a>
-        
+        <a href="/favePeople/<%= result.name %>"><%= result.name %></a>
+
         <a href="/favePeople/edit/<%= result.id %>">edit</a>
     </h3>
     <form action="/favePeople/<%= result.name %>?_method=DELETE" method="POST">

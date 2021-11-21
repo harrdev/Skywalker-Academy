@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="/static/css/style.css">
 <h2>Favorite Star Wars Planets</h2>
 
 <%results.forEach(result => {%>
         <div>
+            <a href="/favePlanets/<%= result.name %>"><%= result.name %></a>
             <h1>Name: <%= result.name %></h1>
             <h2>Population: <%= result.population %></h2>
             <h2>Terrain: <%= result.terrain %></h2>
