@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
-    <title>Skywalker Academy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet">
+  <title>Skywalker Academy</title>
 </head>
+
 <body>
-    <header>
-        <nav class="topnav">
-            <ul class="navUl">
-              <% if (!currentUser) { %>
-                <li class="navLink"><a href="/auth/signup">Signup</a></li>
-                <li class="navLink"><a href="/auth/login">Login</a></li>
-              <% } else { %>
-                <li class="navLink"><a href="/">Home</a></li>
-                <li class="navLink"><a href="/favePeople">Favorite People</a> </li>
-                <li class="navLink"><a href="/favePlanets">Favorite Planets</a> </li>
-                <li class="navLink"><a href="/auth/logout">Logout</a></li>
-                <li class="navLink"><a href="/profile">Profile</a></li>
-              <% } %>
-            </ul>
-            <h1 id="title">Skywalker Academy</h1>
-          </nav>
-    </header>
-    <%- include('partials/alerts') %>
-    <%- body %> 
+  <header>
+    <nav class="topnav">
+      <ul class="navUl">
+        <% if (!currentUser) { %>
+          <li class="navLink"><a href="/auth/signup">Signup</a></li>
+          <li class="navLink"><a href="/auth/login">Login</a></li>
+          <% } else { %>
+            <li class="navLink"><a href="/">Home</a></li>
+            <li class="navLink"><a href="/favePeople">Favorite People</a> </li>
+            <li class="navLink"><a href="/favePlanets">Favorite Planets</a> </li>
+            <li class="navLink"><a href="/auth/logout">Logout</a></li>
+            <li class="navLink"><a href="/profile">Profile</a></li>
+            <% } %>
+      </ul>
+      <h1 id="title">Skywalker Academy</h1>
+    </nav>
+  </header>
+  <%- include('partials/alerts') %>
+    <%- body %>
 </body>
+
 </html>

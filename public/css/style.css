@@ -3,6 +3,7 @@ body {
     background-size: cover;
     color: white;
     margin: 0;
+    font-family: 'Poller One', cursive;
 }
 
 header {
@@ -22,34 +23,99 @@ a:link, a:visited {
     display: inline-block;
     height: 20px;
     width: 200px;
-  }
-  
-  a:hover, a:active {
+}
+
+a:hover, a:active {
     background-color: red;
-  }
+}
 
-  .navLink {
-      list-style-type: none;
-      text-decoration: none;
-      padding: 0px 90px 0px 0px;
-  }
+.navLink {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 0px 90px 0px 0px;
+}
 
-  nav {
-      width: 100vw;
-      top: 0;
-      margin: 0;
-      padding: 0;
-  }
+nav {
+    width: 100vw;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
 
-  .navUl {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      background-color: blue;
-  }
+.navUl {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: blue;
+}
 
-  #title {
-      text-align: center;
-      font-size: 40px;
-  }
+#title {
+    text-align: center;
+    font-size: 40px;
+}
 
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#addPlanet:link, #addPlanet:visited {
+    background-color: green;
+    color: white;
+    padding: 14px 25px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 20px;
+    width: 400px;
+}
+
+#addPlanet:hover, #addPlanet:active {
+    background-color: white;
+    color: green;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 400px;
+}
+
+label {
+    color: black;
+}
