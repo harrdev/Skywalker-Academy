@@ -3,15 +3,15 @@
 <div class="form">
     <form action="/favePlanets/<%= planetId %>/?_method=PUT" method="POST">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="<%= name %>"><br>
+        <input class="inpt" type="text" id="name" name="name" value="<%= name %>"><br>
         <label for="population">Population</label>
-        <input type="text" id="population" name="population" value="<%= population %>"><br>
+        <input class="inpt" type="text" id="population" name="population" value="<%= population %>"><br>
         <label for="terrain">Terrain</label>
-        <input type="text" id="terrain" name="terrain" value="<%= terrain %>"><br>
+        <input class="inpt" type="text" id="terrain" name="terrain" value="<%= terrain %>"><br>
         <label for="gravity">Gravity</label>
-        <input type="text" id="gravity" name="gravity" value="<%= gravity %>"><br>
+        <input class="inpt" type="text" id="gravity" name="gravity" value="<%= gravity %>"><br>
         <label for="diameter">Diameter</label>
-        <input type="text" id="diameter" name="diameter" value="<%= diameter %>"><br>
+        <input class="inpt" type="text" id="diameter" name="diameter" value="<%= diameter %>"><br>
         <input type="submit" value="Update Planet Info">
     </form>
 </div>

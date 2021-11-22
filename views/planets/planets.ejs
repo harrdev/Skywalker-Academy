@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
+<div class="index">
 <h1>Planets List</h1>
 
-<a id="addPlanet" href="/favePlanets/new">Add a New Planet</a><br><br>
+<a class="new" href="/favePlanets/new">Add a New Planet</a><br><br>
 <% swPlanets1.forEach(planet => { %>
     <br><br>
     <div><a href="/planets/<%= planet.name %>"><%= planet.name %></a>
@@ -33,3 +34,4 @@
     <div><a href="/planets/<%= planet.name %>"><%= planet.name %></a> <br>
     </div>
 <% }) %>
+</div>
