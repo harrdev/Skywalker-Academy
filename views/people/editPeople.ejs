@@ -1,17 +1,19 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
-<div class="form">
-    <form action="/favePeople/<%= personId %>/?_method=PUT" method="POST">
-        <label for="name">Name</label>
-        <input class="inpt" type="text" id="name" name="name" value="<%= name %>"><br>
-        <label for="birthYear">Birth Year</label>
-        <input class="inpt" type="text" id="birthYear" name="birthYear" value="<%= birthYear %>"><br>
-        <label for="hair">Hair Color</label>
-        <input class="inpt" type="text" id="hair" name="hair" value="<%= hair %>"><br>
-        <label for="eyes">Eye Color</label>
-        <input class="inpt" type="text" id="eyes" name="eyes" value="<%= eyes %>"><br>
-        <label for="homeworld">Homeworld</label>
-        <input class="inpt" type="text" id="homeworld" name="homeworld" value="<%= homeworld %>"><br>
-        <input type="submit" value="Update Person Info">
-    </form>
+<div class="page">
+    <div class="form">
+        <form action="/favePeople/<%= personId %>/?_method=PUT" method="POST">
+            <label for="name">Name</label>
+            <input class="inpt" type="text" id="name" name="name" value="<%= name %>"><br>
+            <label for="birthYear">Birth Year</label>
+            <input class="inpt" type="text" id="birthYear" name="birthYear" value="<%= birthYear %>"><br>
+            <label for="hair">Hair Color</label>
+            <input class="inpt" type="text" id="hair" name="hair" value="<%= hair %>"><br>
+            <label for="eyes">Eye Color</label>
+            <input class="inpt" type="text" id="eyes" name="eyes" value="<%= eyes %>"><br>
+            <label for="homeworld">Homeworld</label>
+            <input class="inpt" type="text" id="homeworld" name="homeworld" value="<%= homeworld %>"><br>
+            <input type="submit" value="Update Person Info">
+        </form>
+    </div>
 </div>

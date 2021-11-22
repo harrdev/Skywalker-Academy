@@ -1,17 +1,24 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
-<h1>Planet Academy</h1><br><br>
-<h1>Name: <%= name %></h1>
-<h2>Population: <%= population %></h2>
-<h2>Terrain: <%= terrain %></h2>
-<h2>Gravity: <%= gravity %></h2>
-<h2>Diameter: <%= diameter %></h2>
+<div class="page">
+    <h1>Planet Academy</h1><br><br>
+    <h1>Name: <%= name %>
+    </h1>
+    <h2>Population: <%= population %>
+    </h2>
+    <h2>Terrain: <%= terrain %>
+    </h2>
+    <h2>Gravity: <%= gravity %>
+    </h2>
+    <h2>Diameter: <%= diameter %>
+    </h2>
 
-<form action="/favePlanets/addFave" method="POST">
-    <input hidden type="text" name="name" value="<%= name %>">
-    <input hidden type="text" name="population" value="<%= population %>">
-    <input hidden type="text" name="terrain" value="<%= terrain %>">
-    <input hidden type="text" name="gravity" value="<%= gravity %>">
-    <input hidden type="text" name="diameter" value="<%= diameter %>">
-    <button type="submit">Add to Favorites</button>
-</form>
+    <form action="/favePlanets/addFave" method="POST">
+        <input hidden type="text" name="name" value="<%= name %>">
+        <input hidden type="text" name="population" value="<%= population %>">
+        <input hidden type="text" name="terrain" value="<%= terrain %>">
+        <input hidden type="text" name="gravity" value="<%= gravity %>">
+        <input hidden type="text" name="diameter" value="<%= diameter %>">
+        <button type="submit">Add to Favorites</button>
+    </form>
+</div>

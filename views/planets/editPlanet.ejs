@@ -1,17 +1,19 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
-<div class="form">
-    <form action="/favePlanets/<%= planetId %>/?_method=PUT" method="POST">
-        <label for="name">Name</label>
-        <input class="inpt" type="text" id="name" name="name" value="<%= name %>"><br>
-        <label for="population">Population</label>
-        <input class="inpt" type="text" id="population" name="population" value="<%= population %>"><br>
-        <label for="terrain">Terrain</label>
-        <input class="inpt" type="text" id="terrain" name="terrain" value="<%= terrain %>"><br>
-        <label for="gravity">Gravity</label>
-        <input class="inpt" type="text" id="gravity" name="gravity" value="<%= gravity %>"><br>
-        <label for="diameter">Diameter</label>
-        <input class="inpt" type="text" id="diameter" name="diameter" value="<%= diameter %>"><br>
-        <input type="submit" value="Update Planet Info">
-    </form>
+<div class="page">
+    <div class="form">
+        <form action="/favePlanets/<%= planetId %>/?_method=PUT" method="POST">
+            <label for="name">Name</label>
+            <input class="inpt" type="text" id="name" name="name" value="<%= name %>"><br>
+            <label for="population">Population</label>
+            <input class="inpt" type="text" id="population" name="population" value="<%= population %>"><br>
+            <label for="terrain">Terrain</label>
+            <input class="inpt" type="text" id="terrain" name="terrain" value="<%= terrain %>"><br>
+            <label for="gravity">Gravity</label>
+            <input class="inpt" type="text" id="gravity" name="gravity" value="<%= gravity %>"><br>
+            <label for="diameter">Diameter</label>
+            <input class="inpt" type="text" id="diameter" name="diameter" value="<%= diameter %>"><br>
+            <input type="submit" value="Update Planet Info">
+        </form>
+    </div>
 </div>

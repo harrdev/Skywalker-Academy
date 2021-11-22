@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "bcrypt": "^5.0.0",
+    "cli": "^1.0.1",
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.5",
@@ -24,7 +25,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.4.2",
-    "sequelize": "^6.3.5",
+    "sequelize": "^6.11.0",
     "swapi-node": "^0.7.0",
     "swapi-wrapper": "^1.0.0"
   }

@@ -1,19 +1,27 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
-<h1>People Academy</h1><br><br>
-<h1>Name: <%= name %></h1>
-<h2>Born: <%= birthYear %></h2>
-<h2>Height: <%= height %></h2>
-<h2>Hair Color: <%= hair %></h2>
-<h2>Eye Color: <%= eyes %></h2>
-<h2>Homeworld: <%= homeworld %></h2>
+<div class="page">
+    <h1>People Academy</h1><br><br>
+    <h1>Name: <%= name %>
+    </h1>
+    <h2>Born: <%= birthYear %>
+    </h2>
+    <h2>Height: <%= height %>
+    </h2>
+    <h2>Hair Color: <%= hair %>
+    </h2>
+    <h2>Eye Color: <%= eyes %>
+    </h2>
+    <h2>Homeworld: <%= homeworld %>
+    </h2>
 
-<form action="/favePeople/addFave" method="POST">
-    <input hidden type="text" name="name" value="<%= name %>">
-    <input hidden type="text" name="birthYear" value="<%= birthYear %>">
-    <input hidden type="text" name="height" value="<%= height %>">
-    <input hidden type="text" name="hair" value="<%= hair %>">
-    <input hidden type="text" name="eyes" value="<%= eyes %>">
-    <input hidden type="text" name="homeworld" value="<%= homeworld %>">
-    <button type="submit">Add to Favorites</button>
-</form>
+    <form action="/favePeople/addFave" method="POST">
+        <input hidden type="text" name="name" value="<%= name %>">
+        <input hidden type="text" name="birthYear" value="<%= birthYear %>">
+        <input hidden type="text" name="height" value="<%= height %>">
+        <input hidden type="text" name="hair" value="<%= hair %>">
+        <input hidden type="text" name="eyes" value="<%= eyes %>">
+        <input hidden type="text" name="homeworld" value="<%= homeworld %>">
+        <button type="submit">Add to Favorites</button>
+    </form>
+</div>

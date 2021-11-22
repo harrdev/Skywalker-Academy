@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="/static/css/style.css">
 
-<h2>Favorite Star Wars People</h2>
+<div class="page">
+    <h2>Favorite Star Wars People</h2>
 
-<%results.forEach(result => {%>
-    <h3>
-        <a href="/favePeople/<%= result.name %>"><%= result.name %></a>
-    </h3>
-<%})%>
+    <%results.forEach(result=> {%>
+        <h3>
+            <a href="/favePeople/<%= result.name %>">
+                <%= result.name %>
+            </a>
+        </h3>
+        <%})%>
+</div>
