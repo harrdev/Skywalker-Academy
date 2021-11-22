@@ -1,11 +1,9 @@
 <link rel="stylesheet" href="/static/css/style.css">
+
 <h1>Favorite Star Wars Planets</h1>
 
 <%results.forEach(result => {%>
         <div>
             <h2><a href="/favePlanets/<%= result.name %>"><%= result.name %></a></h2>
         </div>
-    <form action="/favePlanets/<%= result.name %>?_method=DELETE" method="POST">
-        <button type="submit">Remove From Favorites</button>
-    </form>
 <%})%>

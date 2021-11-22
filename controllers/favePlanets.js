@@ -16,7 +16,6 @@ router.get('/', isLoggedIn, (req, res) => {
 
 // NEW ROUTE
 router.get('/new', isLoggedIn, (req, res) => {
-    console.log("You hit the new route")
     res.render('planets/newPlanet.ejs')
 })
 
@@ -29,7 +28,6 @@ router.post('/addFave', isLoggedIn, (req, res) => {
     })
         .then(([createdFave, wasCreated]) => {
             req.user.addFaveplanets(createdFave)
-            console.log("DB instance created: \n", createdFave)
             res.redirect('/favePlanets')
         })
         .catch(error => {
@@ -39,14 +37,10 @@ router.post('/addFave', isLoggedIn, (req, res) => {
 
 // GET UPDATE FORM
 router.get('/edit/:idx', isLoggedIn, (req, res) => {
-    console.log("Edit route hit: ", req.params.idx)
     db.faveplanet.findOne({
         where: { id: req.params.idx }
     })
         .then(foundPlanet => {
-            console.log("This is the planet to edit: ", foundPlanet)
-            console.log("This is the planetId: ", req.params.idx)
-            console.log("This is the planet name to be passed: ", foundPlanet.name)
             res.render('planets/editPlanet', { planetId: req.params.idx, name: foundPlanet.name, population: foundPlanet.population, diameter: foundPlanet.diameter, terrain: foundPlanet.terrain, gravity: foundPlanet.gravity })
         })
         .catch(error => {
@@ -57,8 +51,6 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 // // UPDATE ROUTE
 router.put('/:id', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
-    console.log("Data variable: ", data)
-    console.log("Data to edit: ", data.name)
     db.faveplanet.update({
         name: data.name,
         gravity: data.gravity,
@@ -69,8 +61,7 @@ router.put('/:id', isLoggedIn, (req, res) => {
         where: { name: data.name }
     })
         .then(editedItem => {
-            console.log("This was edited: ", editedItem)
-            res.redirect('/planets')
+            res.redirect('/favePlanets')
         })
         .catch(error => {
             console.error
@@ -79,7 +70,6 @@ router.put('/:id', isLoggedIn, (req, res) => {
 
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {
-    console.log('this is the fave id\n', req.params.id)
     db.faveplanet.findOne({
         where: { name: req.params.id }
     })
@@ -93,12 +83,10 @@ router.get('/:id', isLoggedIn, (req, res) => {
 
 // DELETE ROUTE
 router.delete('/:id', isLoggedIn, (req, res) => {
-    console.log('this is the id: ', req.params.id)
     db.faveplanet.destroy({
         where: { name: req.params.id }
     })
         .then(deletedItem => {
-            console.log('you deleted: ', deletedItem)
             res.redirect('/favePlanets')
         })
         .catch(error => {

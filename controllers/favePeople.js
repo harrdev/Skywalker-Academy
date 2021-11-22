@@ -16,7 +16,6 @@ router.get('/', isLoggedIn, (req, res) => {
 
 // NEW ROUTE
 router.get('/new', isLoggedIn, (req, res) => {
-    console.log("You hit the new route")
     res.render('people/newPerson.ejs')
 })
 
@@ -29,12 +28,7 @@ router.post('/addFave', isLoggedIn, (req, res) => {
     })
         .then(([createdFave, wasCreated]) => {
             req.user.addFavepeople(createdFave)
-            console.log("DB instance created: \n", createdFave)
             res.redirect('/favePeople')
-                // .then(relationInfo => {
-                //     console.log("relation info: ", relationInfo)
-                //     res.redirect(`/people/${createdFave.name}`)
-                // })
         })
         .catch(error => {
             console.error
@@ -43,13 +37,10 @@ router.post('/addFave', isLoggedIn, (req, res) => {
 
 // GET UPDATE FORM
 router.get('/edit/:idx', isLoggedIn, (req, res) => {
-    console.log("Edit route hit: ", req.params.idx)
     db.favepeople.findOne({
         where: { id: req.params.idx }
     })
         .then(foundPerson => {
-            console.log("This is the person: ", foundPerson)
-            console.log("This is the name: ", foundPerson.name)
             res.render('people/editPeople', { personId: req.params.idx, name: foundPerson.name, height: foundPerson.height, eyes: foundPerson.eyes, hair: foundPerson.hair, homeworld: foundPerson.homeworld, birthYear: foundPerson.birthYear })
         })
         .catch(error => {
@@ -60,8 +51,6 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 // // UPDATE ROUTE
 router.put('/:id', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
-    console.log("Data variable: ", data)
-    console.log("Data to edit: ", data.name)
     db.favepeople.update({
         name: data.name,
         homeworld: data.homeworld,
@@ -73,7 +62,6 @@ router.put('/:id', isLoggedIn, (req, res) => {
         where: { name: data.name }
     })
     .then(editedItem => {
-        console.log("This was edited: ", editedItem)
         res.redirect('/favePeople')
     })
     .catch(error => {
@@ -83,13 +71,10 @@ router.put('/:id', isLoggedIn, (req, res) => {
 
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {
-    console.log('this is the fave id\n', req.params.id)
-    //console.log(req.user)
     db.favepeople.findOne({
         where: { name: req.params.id }
     })
         .then(foundFave => {
-            console.log("Height: ", foundFave.height)
             res.render('people/showPeople', { name: foundFave.name, homeworld: foundFave.homeworld, birthYear: foundFave.birthYear, height: foundFave.height, eyes: foundFave.eyes, hair: foundFave.hair, id: foundFave.id})
         })
         .catch(error => {
@@ -99,12 +84,10 @@ router.get('/:id', isLoggedIn, (req, res) => {
 
 // DELETE ROUTE
 router.delete('/:id', isLoggedIn, (req, res) => {
-    console.log('this is the id: ', req.params.id)
     db.favepeople.destroy({
         where: { name: req.params.id }
     })
         .then(deletedItem => {
-            console.log('you deleted: ', deletedItem)
             res.redirect('/favePeople')
         })
         .catch(error => {

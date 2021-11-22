@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/static/css/style.css">
 
 <h1>Planet Details</h1><br><br>
 <h2><a href="/favePlanets/edit/<%= id %>">Edit Planet</a></h2>
@@ -6,3 +7,6 @@
 <h2>Terrain: <%= terrain %></h2>
 <h2>Gravity: <%= gravity %></h2>
 <h2>Diameter: <%= diameter %></h2>
+<form action="/favePlanets/<%= name %>?_method=DELETE" method="POST">
+    <button type="submit">Remove From Favorites</button>
+</form>

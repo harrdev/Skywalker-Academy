@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/static/css/style.css">
+
 <h1>Person Details</h1><br><br>
 <h2><a href="/favePeople/edit/<%= id %>">Edit Person</a></h2>
 <h1>Name: <%= name %></h1>
@@ -6,3 +8,7 @@
 <h2>Height: <%= height %></h2>
 <h2>Hair Color: <%= hair %></h2>
 <h2>Eye Color: <%= eyes %></h2>
+
+<form action="/favePeople/<%= name %>?_method=DELETE" method="POST">
+    <button type="submit">Remove From Favorites</button>
+</form>
