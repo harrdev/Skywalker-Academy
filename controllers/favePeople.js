@@ -15,7 +15,7 @@ router.get('/', isLoggedIn, (req, res) => {
 })
 
 // NEW ROUTE
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     console.log("You hit the new route")
     res.render('people/newPerson.ejs')
 })
@@ -58,7 +58,7 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 })
 
 // // UPDATE ROUTE
-router.put('/:id', (req, res) => {
+router.put('/:id', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
     console.log("Data variable: ", data)
     console.log("Data to edit: ", data.name)

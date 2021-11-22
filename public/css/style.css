@@ -1,0 +1,54 @@
+body {
+    background: url("https://images.hdqwalls.com/download/lone-jedi-star-wars-girl-4k-sa-2880x1800.jpg/") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    margin: 0;
+}
+
+header {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    top: 0;
+}
+
+a:link, a:visited {
+    background-color: blue;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height: 20px;
+    width: 200px;
+  }
+  
+  a:hover, a:active {
+    background-color: red;
+  }
+
+  .navLink {
+      list-style-type: none;
+      text-decoration: none;
+      padding: 0px 90px 0px 0px;
+  }
+
+  nav {
+      width: 100vw;
+      top: 0;
+      margin: 0;
+      padding: 0;
+  }
+
+  .navUl {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: blue;
+  }
+
+  #title {
+      text-align: center;
+      font-size: 40px;
+  }
+

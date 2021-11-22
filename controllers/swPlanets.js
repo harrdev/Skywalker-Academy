@@ -16,6 +16,7 @@ const requestThree = axios.get(three)
 const requestFour = axios.get(four)
 const requestFive = axios.get(five)
 const requestSix = axios.get(six)
+
 router.get('/', isLoggedIn, (req, res) => {
     axios.all([requestOne, requestTwo, requestThree, requestFour, requestFive, requestSix]).then(axios.spread((...responses) => {
         const responseOne = responses[0]
@@ -36,6 +37,7 @@ router.get('/', isLoggedIn, (req, res) => {
         console.error
     })
 })
+
 router.get('/:planet', function (req, res) {
     let planet = req.params.planet
     console.log(planet)

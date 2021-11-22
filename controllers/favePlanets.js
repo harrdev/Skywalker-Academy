@@ -15,7 +15,7 @@ router.get('/', isLoggedIn, (req, res) => {
 })
 
 // NEW ROUTE
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     console.log("You hit the new route")
     res.render('planets/newPlanet.ejs')
 })
@@ -55,7 +55,7 @@ router.get('/edit/:idx', isLoggedIn, (req, res) => {
 })
 
 // // UPDATE ROUTE
-router.put('/:id', (req, res) => {
+router.put('/:id', isLoggedIn, (req, res) => {
     const data = JSON.parse(JSON.stringify(req.body))
     console.log("Data variable: ", data)
     console.log("Data to edit: ", data.name)
@@ -92,7 +92,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
 })
 
 // DELETE ROUTE
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isLoggedIn, (req, res) => {
     console.log('this is the id: ', req.params.id)
     db.faveplanet.destroy({
         where: { name: req.params.id }

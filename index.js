@@ -11,7 +11,6 @@ const methodOverride = require('method-override')
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
-// app.set('views', path.join(__dirname, 'views'))
 app.use(ejsLayouts)
 app.use('/static', express.static('public'))
 // body parser middelware

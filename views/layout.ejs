@@ -9,20 +9,20 @@
 </head>
 <body>
     <header>
-        <h1>Skywalker Academy</h1>
-        <nav>
-            <ul>
+        <nav class="topnav">
+            <ul class="navUl">
               <% if (!currentUser) { %>
-                <li><a href="/auth/signup">Signup</a></li>
-                <li><a href="/auth/login">Login</a></li>
+                <li class="navLink"><a href="/auth/signup">Signup</a></li>
+                <li class="navLink"><a href="/auth/login">Login</a></li>
               <% } else { %>
-                <li><a href="/auth/logout">Logout</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/">Home</a></li>
-                <li><a href="/favePeople">Favorite People</a> </li>
-                <li><a href="/favePlanets">Favorite Planets</a> </li>
+                <li class="navLink"><a href="/">Home</a></li>
+                <li class="navLink"><a href="/favePeople">Favorite People</a> </li>
+                <li class="navLink"><a href="/favePlanets">Favorite Planets</a> </li>
+                <li class="navLink"><a href="/auth/logout">Logout</a></li>
+                <li class="navLink"><a href="/profile">Profile</a></li>
               <% } %>
             </ul>
+            <h1 id="title">Skywalker Academy</h1>
           </nav>
     </header>
     <%- include('partials/alerts') %>
