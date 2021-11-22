@@ -26,6 +26,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.4.2",
     "sequelize": "^6.11.0",
+    "sequelize-cli": "^6.3.0",
     "swapi-node": "^0.7.0",
     "swapi-wrapper": "^1.0.0"
   }
