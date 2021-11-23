@@ -56,22 +56,17 @@ router.get('/:person', function (req, res) {
     axios.get(`https://swapi.py4e.com/api/people/?search=${person}`)
         .then(apiRes => {
             let homeworld = apiRes.data.results[0].homeworld
-            // console.log("homeworld: ", homeworld)
-            // console.log("Api Data: ", apiRes.data.results)
             return apiRes.data.results[0]
         })
         .then(result => {
-            //console.log("This is the passed data:", result)
             axios.get(result.homeworld)
                 .then(respond => {
-                    // console.log("Luke should be: ", result.name)
                     let name = result.name
                     let homeworld = respond.data.name
                     let birthYear = result.birth_year
                     let height = result.height
                     let hair = result.hair_color
                     let eyes = result.eye_color
-                    // console.log("Hair should be: ", hair)
                     res.render('people/academyPeople', { name, birthYear, height, hair, eyes, homeworld })
                 })
                 .catch(error => {
