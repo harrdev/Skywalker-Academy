@@ -61,13 +61,13 @@ router.put('/:id', isLoggedIn, (req, res) => {
     }, {
         where: { name: data.name }
     })
-    .then(editedItem => {
-        res.redirect('/favePeople')
-    })
-    .catch(error => {
-        console.error
-    })
-  });
+        .then(editedItem => {
+            res.redirect('/favePeople')
+        })
+        .catch(error => {
+            console.error
+        })
+});
 
 // SHOW ROUTE
 router.get('/:id', isLoggedIn, (req, res) => {
@@ -75,7 +75,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
         where: { name: req.params.id }
     })
         .then(foundFave => {
-            res.render('people/showPeople', { name: foundFave.name, homeworld: foundFave.homeworld, birthYear: foundFave.birthYear, height: foundFave.height, eyes: foundFave.eyes, hair: foundFave.hair, id: foundFave.id})
+            res.render('people/showPeople', { name: foundFave.name, homeworld: foundFave.homeworld, birthYear: foundFave.birthYear, height: foundFave.height, eyes: foundFave.eyes, hair: foundFave.hair, id: foundFave.id })
         })
         .catch(error => {
             console.error
