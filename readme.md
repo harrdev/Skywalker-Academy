@@ -6,10 +6,14 @@ GitHub: https://github.com/harrdev/project2
 ## Login
     * Hashed password
     * Required login to access content/pages
+    * Create username and password (register)
 
 ## View existing, create, edit, and delete Star Wars Character and Planet Information
-
-## Add to favorites list for easy access to information
+    * Select People or Planets for list of existing data
+    * Click on Add Person or Add Planet to add a new entry
+    * Select "Add to Favorites" to store specific person or planet's information
+    * Option to delete from favorite by clicking on delete button
+    * Option to edit person or planet with edit button
 
 <br><br>
 
