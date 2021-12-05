@@ -17,6 +17,14 @@ GitHub: https://github.com/harrdev/project2
 
 <br><br>
 
+# Installation Instructions
+    1. Fork and Clone from https://github.com/harrdev/project2
+    2. Command: npm i
+    3. Command: sequelize db:create
+    4. Command: sequelize db:migrate
+    5. In VSCode: create new file in parent folder (Project2), name that file .env
+    6. Add this in the .env file: SUPER_SECRET_SECRET=secret
+    
 # Deployment Instructions
     1. No API key needed
     2. Port 3000

@@ -59,6 +59,10 @@ app.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile')
 })
 
+app.get('/*', isLoggedIn, (req, res) => {
+    res.render('404')
+})
+
 app.listen(process.env.PORT || 3000, ()=>{
     // console.log(`process.env.SUPER_SECRET_SECRET ${process.env.SUPER_SECRET_SECRET}`)
     console.log("Listening to port 3000")
