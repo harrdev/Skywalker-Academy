@@ -31,7 +31,7 @@ GitHub: https://github.com/harrdev/project2
     3. npm i (to install dependencies)
     4. npm i sequelize-cli (to install local version of sequelize-cli)
     5. Create Heroku app - heroku apps:create Skywalker Academy
-    6. Go to Heroku's sit for deployed app
+    6. Go to Heroku's site for deployed app
         * Select settings
         * Add into config var: SUPER_SECRET_SECRET with value of "secret"
     7. Commit and push to Heroku - git push heroku main
